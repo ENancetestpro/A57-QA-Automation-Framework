@@ -1,18 +1,14 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 import pages.PlaylistPage;
 
-public class Homework22 extends BaseTest {
+public class Homework23 extends BaseTest {
 
 
     @Test
     public void renamePlaylist() {
-        String updatedPlaylistMsg = "Updated playlist \"RELAX.\"";
+        String updatedPlaylistMsg = "Updated playlist \"LETSDRIVE.\"";
 
         // GIVEN
         LoginPage loginPage = new LoginPage(driver);
@@ -26,7 +22,7 @@ public class Homework22 extends BaseTest {
         playlistPage.locatePlaylist();
         playlistPage.contextClickPlaylist();
         playlistPage.clickEditPlaylist();
-        playlistPage.enterNewPlaylistName("RELAX");
+        playlistPage.enterNewPlaylistName("LETSDRIVE");
 
         // THEN
         Assert.assertEquals(playlistPage.getSuccessMessage(), updatedPlaylistMsg);
