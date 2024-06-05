@@ -12,7 +12,7 @@ public class HomePage extends BasePage {
     }
 
     //Web Elements
-    By userAvatarIcon = By.cssSelector("img.avatar");
+   private By userAvatarIcon = By.cssSelector("img.avatar");
 
     //Helper Methods
     public WebElement getUserAvatar(){

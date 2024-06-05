@@ -24,26 +24,6 @@ public class BaseTest {
         driver.get(url);
     }
 
-    public void provideEmail(String email) {
-        WebElement emailField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[placeholder='Email Address']")));
-        //WebElement emailField = driver.findElement(By.cssSelector("input[placeholder='Email Address']"));
-        emailField.clear();
-        emailField.sendKeys(email);
-    }
-
-    public void providePassword(String password) {
-        WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='password']")));
-        //WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
-        passwordField.clear();
-        passwordField.sendKeys(password);
-    }
-
-    public void clickSubmit() {
-        WebElement submitBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[type='submit']")));
-        //WebElement submitBtn = driver.findElement(By.cssSelector("[type='submit']"));
-        submitBtn.click();
-    }
-
     @BeforeSuite
     static void setupClass() {
         WebDriverManager.chromedriver().setup();

@@ -12,7 +12,7 @@ public class Homework22 extends BaseTest {
 
     @Test
     public void renamePlaylist() {
-        String updatedPlaylistMsg = "Updated playlist \"TRAVEL.\"";
+        String updatedPlaylistMsg = "Updated playlist \"RELAX.\"";
 
         // GIVEN
         LoginPage loginPage = new LoginPage(driver);
@@ -26,7 +26,7 @@ public class Homework22 extends BaseTest {
         playlistPage.locatePlaylist();
         playlistPage.contextClickPlaylist();
         playlistPage.clickEditPlaylist();
-        playlistPage.enterNewPlaylistName("TRAVEL");
+        playlistPage.enterNewPlaylistName("RELAX");
 
         // THEN
         Assert.assertEquals(playlistPage.getSuccessMessage(), updatedPlaylistMsg);
