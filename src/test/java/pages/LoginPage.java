@@ -16,8 +16,10 @@ public class LoginPage extends BasePage{
     //Web Elements
     @FindBy(css = "input[placeholder='Email Address']")
     private WebElement emailField;
+
     @FindBy(css = "input[type='password']")
     private WebElement passwordField;
+
     @FindBy(css = "[type='submit']")
     private WebElement loginBtn;
 

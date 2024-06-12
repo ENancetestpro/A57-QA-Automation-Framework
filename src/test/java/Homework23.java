@@ -5,12 +5,10 @@ import pages.PlaylistPage;
 
 public class Homework23 extends BaseTest {
 
-
     @Test
     public void renamePlaylist() {
-        String updatedPlaylistMsg = "Updated playlist \"LETSDRIVE.\"";
+        String updatedPlaylistMsg = "Updated playlist \"GoodMusix3.\"";
 
-        // GIVEN
         LoginPage loginPage = new LoginPage(driver);
         PlaylistPage playlistPage = new PlaylistPage(driver);
 
@@ -18,16 +16,15 @@ public class Homework23 extends BaseTest {
         loginPage.providePassword("HondaAccord2024$");
         loginPage.clickSubmit();
 
-        // WHEN
         playlistPage.locatePlaylist();
         playlistPage.contextClickPlaylist();
         playlistPage.clickEditPlaylist();
-        playlistPage.enterNewPlaylistName("LETSDRIVE");
+        playlistPage.enterNewPlaylistName("GoodMusix3");
 
-        // THEN
         Assert.assertEquals(playlistPage.getSuccessMessage(), updatedPlaylistMsg);
-        }
-        }
+    }
+}
+
 
 
 

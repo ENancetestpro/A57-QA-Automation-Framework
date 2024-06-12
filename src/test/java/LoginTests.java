@@ -8,14 +8,12 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
-
 import java.time.Duration;
 
 public class LoginTests extends BaseTest {
 
     @Test
     public void loginEmptyEmailPassword() {
-      //Added ChromeOptions argument below to fix websocket error
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         WebDriver driver = new ChromeDriver(options);
@@ -26,9 +24,8 @@ public class LoginTests extends BaseTest {
         driver.quit();
     }
 
-    //Login with valid email Test using the POM
     @Test
-    public void loginValidEmailValidPasswordTest(){
+    public void loginValidEmailValidPasswordTest() {
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
         loginPage.provideEmail("elliott.nance@testpro.io");
@@ -36,11 +33,4 @@ public class LoginTests extends BaseTest {
         loginPage.clickSubmit();
         Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
     }
-
-
-
-
-
-    }
-
-
+}
