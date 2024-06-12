@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -46,7 +47,14 @@ public class PlaylistPage extends BasePage {
     }
 
     public String getSuccessMessage() {
-        wait.until(ExpectedConditions.visibilityOf(successNotification)); // Explicit wait for the success message
-        return successNotification.getText();
+        try {
+            wait.until(ExpectedConditions.visibilityOf(successNotification));
+            return successNotification.getText();
+        } catch (TimeoutException e) {
+            // Log additional debugging information here
+            System.out.println("Element not found within the timeout period: " + e.getMessage());
+            // Optionally, take a screenshot or log the page source
+            return "Element not found";
+        }
     }
 }
