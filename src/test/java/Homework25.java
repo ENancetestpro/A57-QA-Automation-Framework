@@ -7,7 +7,7 @@ public class Homework25 extends BaseTest {
 
     @Test
     public void renamePlaylist() {
-        String updatedPlaylistMsg = "Updated playlist \"StudyMusic\"";
+        String updatedPlaylistMsg = "Updated playlist \"Relax.\"";
 
         LoginPage loginPage = new LoginPage(driver);
         PlaylistPage playlistPage = new PlaylistPage(driver);
@@ -19,7 +19,7 @@ public class Homework25 extends BaseTest {
         playlistPage.locatePlaylist();
         playlistPage.contextClickPlaylist();
         playlistPage.clickEditPlaylist();
-        playlistPage.enterNewPlaylistName("StudyMusic");
+        playlistPage.enterNewPlaylistName("Relax");
 
         String actualMessage = playlistPage.getSuccessMessage();
         Assert.assertEquals(actualMessage, updatedPlaylistMsg, "The success message did not match.");    }
