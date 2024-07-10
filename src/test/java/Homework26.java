@@ -3,11 +3,11 @@ import org.testng.annotations.Test;
 import pages.LoginPage;
 import pages.PlaylistPage;
 
-public class Homework25 extends BaseTest {
+public class Homework26 extends BaseTest {
 
     @Test
     public void renamePlaylist() {
-        String updatedPlaylistMsg = "Updated playlist \"Relax.\"";
+        String updatedPlaylistMsg = "Updated playlist \"Chill.\"";
 
         LoginPage loginPage = new LoginPage(driver);
         PlaylistPage playlistPage = new PlaylistPage(driver);
@@ -19,7 +19,7 @@ public class Homework25 extends BaseTest {
         playlistPage.locatePlaylist();
         playlistPage.contextClickPlaylist();
         playlistPage.clickEditPlaylist();
-        playlistPage.enterNewPlaylistName("Relax");
+        playlistPage.enterNewPlaylistName("Chill");
 
         String actualMessage = playlistPage.getSuccessMessage();
         Assert.assertEquals(actualMessage, updatedPlaylistMsg, "The success message did not match.");    }
