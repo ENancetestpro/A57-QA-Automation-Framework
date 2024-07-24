@@ -28,10 +28,8 @@ public class LoginTests extends BaseTest {
     public void loginValidEmailValidPasswordTest() {
         /*LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);*/
-
         LoginPage loginPage = new LoginPage(getDriver());
         HomePage homePage = new HomePage(getDriver());
-
         loginPage.provideEmail("elliott.nance@testpro.io");
         loginPage.providePassword("HondaAccord2024$");
         loginPage.clickSubmit();

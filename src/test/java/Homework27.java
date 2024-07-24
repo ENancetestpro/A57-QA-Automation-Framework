@@ -3,7 +3,7 @@ import org.testng.annotations.Test;
 import pages.LoginPage;
 import pages.PlaylistPage;
 
-public class Homework26 extends BaseTest {
+public class Homework27 extends BaseTest {
 
     @Test
     public void renamePlaylist() {

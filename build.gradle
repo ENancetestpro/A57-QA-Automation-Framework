@@ -10,15 +10,18 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.testng:testng:latest.integration'
-    implementation 'org.seleniumhq.selenium:selenium-java:latest.integration'
-    testImplementation 'io.github.bonigarcia:webdrivermanager:latest.integration'
+    testImplementation 'org.testng:testng:7.10.2'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.22.0'
+    testImplementation 'io.github.bonigarcia:webdrivermanager:5.8.0'
+    implementation 'io.cucumber:cucumber-testng:7.18.0'
+    implementation 'io.cucumber:cucumber-core:7.18.0'
+    implementation 'io.cucumber:cucumber-java:7.18.0'
+    implementation 'io.cucumber:gherkin:27.0.0'
 }
-
 
 test {
     useTestNG() {
-        suites "src/test/resources/${suite}.xml"
+        suites System.getProperty("suite", "src/test/resources/default.xml")
         systemProperty "browser", System.getProperty("browser")
     }
 }
