@@ -3,6 +3,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 
 
@@ -23,6 +24,9 @@ public class LoginPage extends BasePage{
     @FindBy(css = "[type='submit']")
     private WebElement loginBtn;
 
+    @FindBy(css = "form[data-testid][class]")    //form[data-testid][class='error']
+    private WebElement errorForm;
+
     //Helper Methods
     public void provideEmail(String email) {
         emailField.sendKeys(email);
@@ -33,6 +37,10 @@ public class LoginPage extends BasePage{
     public void clickSubmit() {
         loginBtn.click();
     }
+    public boolean isErrorDisplayed() {
+        return errorForm.isDisplayed();
+    }
+
     public void login() {
         provideEmail("elliott.nance@testpro.io");
         providePassword("HondaAccord2024$");

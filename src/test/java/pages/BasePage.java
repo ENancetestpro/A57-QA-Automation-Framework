@@ -1,5 +1,4 @@
 package pages;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,14 +14,15 @@ public class BasePage {
     protected WebDriverWait wait;
     protected WebDriver driver;
 
-    public BasePage(WebDriver givenDriver) {
+    public BasePage(WebDriver givenDriver){
         driver = givenDriver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         actions = new Actions(driver);
-        PageFactory.initElements(driver, this); // Initialize WebElements
+        PageFactory.initElements(driver,this);// Initialize WebElements
     }
 
-    public WebElement findElement(By locator) {
+    public WebElement findElement(By locator){
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
+
 }

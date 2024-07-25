@@ -21,20 +21,14 @@ import java.util.HashMap;
 
 public class BaseTest {
     public static WebDriver driver;
-
     private static final ThreadLocal<WebDriver> threadDriver = new ThreadLocal <>();
-
     public static WebDriver getDriver(){
-
         return threadDriver.get();
     }
 
     public WebDriverWait wait;
-
     public String url = "https://qa.koel.app/";
-
     public Actions actions;
-
     public void navigateToPage() {
         //driver.get(url);
         getDriver().get(url);
@@ -50,29 +44,24 @@ public class BaseTest {
     @BeforeMethod
     @Parameters({"BaseURL"})
     public void launchBrowser(String BaseURL) throws MalformedURLException {
-        //driver = pickBrowser(System.getProperty("browser"));
-        threadDriver.set(pickBrowser(System.getProperty("browser")));
-        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        String browser = System.getProperty("browser", "chrome");
+        threadDriver.set(pickBrowser(browser));
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        //driver.manage().window().maximize();
         getDriver().manage().window().maximize();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        actions = new Actions(driver);
-        url = BaseURL;
+        wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        actions = new Actions(getDriver());
+        url = BaseURL != null ? BaseURL : url;
         navigateToPage();
     }
 
-    /*@AfterMethod
-    public void closeBrowser() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }*/
     @AfterMethod
-    public void tearDown(){
-        threadDriver.get().close();
-        threadDriver.remove();
+    public void closeBrowser() {
+        if (getDriver() != null) {
+            getDriver().quit();
+            threadDriver.remove();
+        }
     }
+
     public static WebDriver pickBrowser(String browser) throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
         String gridURL = "http://192.168.1.155:4444";
@@ -118,17 +107,12 @@ public class BaseTest {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("browserName", "chrome");
         capabilities.setCapability("browserVersion", "126");
-
-//        ChromeOptions browserOptions = new ChromeOptions();
-//        browserOptions.setPlatformName("Windows 11");
-//        browserOptions.setBrowserVersion("126");
         HashMap<String, Object> ltOptions = new HashMap<String, Object>();
         ltOptions.put("username", "hbfitnessandnutrition");
         ltOptions.put("accessKey", "3DkqvXjbcv4CggNYQtoIDerZ9yvKOhOexf4JRwhaY1QnMddFSa");
         ltOptions.put("project", "Cloud Test");
         ltOptions.put("w3c", true);
         ltOptions.put("plugin", "java-java");
-//        browserOptions.setCapability("LT:Options", ltOptions);
         capabilities.setCapability("LT: Options" , ltOptions);
         return driver = new RemoteWebDriver(new URL("https://" +userName + ":" +accessKey + hubURL), capabilities);
 
